@@ -331,3 +331,88 @@ scale slider {
   background-color: rgba(203, 166, 247, 0.14);
   border-color: rgba(203, 166, 247, 0.60);
 }
+
+.dev-panel {
+  background-color: rgba(17, 17, 27, 0.94);
+  border: 1px solid rgba(203, 166, 247, 0.34);
+  border-radius: 26px;
+  padding: 18px;
+  color: #cdd6f4;
+}
+
+.dev-header {
+  margin-bottom: 16px;
+}
+
+.dev-title {
+  color: #cba6f7;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.dev-subtitle {
+  color: #6c7086;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.dev-close {
+  color: #6c7086;
+  font-size: 16px;
+  margin-left: 88px;
+  padding: 4px 8px;
+}
+
+.dev-close:hover {
+  color: #f38ba8;
+}
+
+.dev-section {
+  background-color: rgba(30, 30, 46, 0.90);
+  border: 1px solid rgba(203, 166, 247, 0.24);
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.dev-row {
+  padding: 7px 4px;
+}
+
+.dev-name {
+  color: #cdd6f4;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.dev-value {
+  color: #a6adc8;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.mauve {
+  color: #cba6f7;
+  font-size: 16px;
+}
+
+.dev-actions {
+  margin-bottom: 10px;
+}
+
+.dev-btn {
+  background-color: rgba(49, 50, 68, 0.76);
+  border: 1px solid rgba(203, 166, 247, 0.22);
+  border-radius: 16px;
+  padding: 13px 29px;
+  margin-right: 10px;
+  color: #cdd6f4;
+  font-size: 20px;
+}
+
+.dev-btn:hover {
+  background-color: rgba(203, 166, 247, 0.16);
+  border-color: rgba(203, 166, 247, 0.60);
+}

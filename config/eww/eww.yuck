@@ -28,6 +28,26 @@
 (defpoll media_icon :interval "2s"
   `/home/zoro3435x/.config/eww/scripts/media.sh icon`)
 
+(defpoll dev_docker :interval "5s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh docker`)
+
+(defpoll dev_node :interval "30s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh node`)
+
+(defpoll dev_angular :interval "30s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh angular`)
+
+(defpoll dev_dotnet :interval "30s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh dotnet`)
+
+(defpoll dev_python :interval "30s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh python`)
+
+(defpoll dev_lazygit :interval "30s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh lazygit`)
+
+(defpoll dev_branch :interval "10s"
+  `/home/zoro3435x/.config/eww/scripts/dev-status.sh gitbranch`)
 
 (defwidget tile [icon title subtitle onclick]
   (button :class "tile" :onclick onclick
@@ -172,4 +192,62 @@
   :exclusive false
   :focusable false
   (audio-panel)
+)
+
+(defwidget dev-row [icon name value color]
+  (box :class "dev-row"
+    (label :class color :text icon)
+    (label :class "dev-name" :text name)
+    (label :class "dev-value" :halign "end" :hexpand true :text value)
+  )
+)
+
+(defwidget dev-panel []
+  (box :class "dev-panel" :orientation "v" :space-evenly false
+
+    (box :class "dev-header"
+      (box :orientation "v"
+        (label :class "dev-title" :text "󰅩 Dev Dashboard")
+        (label :class "dev-subtitle" :text "Fedora / Niri workspace")
+      )
+      (button :class "dev-close" :onclick "eww close dev_panel" "󰅖")
+    )
+
+    (box :class "dev-section" :orientation "v"
+      (dev-row :icon "󰡨" :name "Docker" :value dev_docker :color "blue")
+      (dev-row :icon "" :name "Node" :value dev_node :color "green")
+      (dev-row :icon "󰚿" :name "Angular" :value dev_angular :color "red")
+      (dev-row :icon "󰪮" :name ".NET" :value dev_dotnet :color "mauve")
+      (dev-row :icon "󰌠" :name "Python" :value dev_python :color "yellow")
+      (dev-row :icon "" :name "Git branch" :value dev_branch :color "blue")
+      (dev-row :icon "" :name "Lazygit" :value dev_lazygit :color "green")
+    )
+
+    (box :class "dev-actions"
+      (button :class "dev-btn" :onclick "kitty" "")
+      (button :class "dev-btn" :onclick "/home/zoro3435x/.config/eww/scripts/dev-status.sh nvim-dotfiles" "")
+      (button :class "dev-btn" :onclick "/home/zoro3435x/.config/eww/scripts/dev-status.sh lazygit-open" "")
+    )
+
+    (box :class "dev-actions"
+      (button :class "dev-btn" :onclick "/home/zoro3435x/.config/eww/scripts/dev-status.sh dockerps" "󰡨")
+      (button :class "dev-btn" :onclick "/home/zoro3435x/.config/eww/scripts/dev-status.sh dotfiles" "󰉋")
+      (button :class "dev-btn" :onclick "/home/zoro3435x/.config/eww/scripts/dev-status.sh dbeaver" "")
+    )
+  )
+)
+
+(defwindow dev_panel
+  :monitor 1
+  :geometry (geometry
+    :anchor "top right"
+    :x "18px"
+    :y "72px"
+    :width "340px"
+    :height "520px"
+  )
+  :stacking "fg"
+  :exclusive false
+  :focusable false
+  (dev-panel)
 )

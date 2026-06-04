@@ -18,7 +18,7 @@ window#waybar {
 #custom-neovim,
 #custom-fuzzel,
 #custom-steam,
-#custom-btop,
+#custom-dev,
 #custom-spotify,
 #custom-power {
     background: rgba(30, 30, 46, 0.72);
@@ -47,8 +47,8 @@ window#waybar {
     color: #89dceb;
 }
 
-#custom-btop {
-    color: #f9e2af;
+#custom-dev {
+    color: #cba6f7;
 }
 
 #custom-spotify {
@@ -69,7 +69,7 @@ window#waybar {
 #custom-kitty:hover,
 #custom-neovim:hover,
 #custom-fuzzel:hover,
-#custom-btop:hover,
+#custom-dev:hover,
 #custom-spotify:hover,
 #custom-power:hover {
     background: rgba(203, 166, 247, 0.18);

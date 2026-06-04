@@ -591,6 +591,7 @@ binds {
     Mod+Shift+Q          { spawn "/home/zoro3435x/.config/waybar/scripts/quick-settings.sh"; }
     Mod+Shift+D          { spawn "/home/zoro3435x/.config/niri/scripts/toggle-dock.sh"; }
     Mod+Shift+W          { spawn "/home/zoro3435x/.config/niri/scripts/wallpaper-switcher.sh"; }
+    Mod+Shift+X          { spawn "/home/zoro3435x/.config/eww/scripts/toggle-dev.sh"; }
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     // ...
