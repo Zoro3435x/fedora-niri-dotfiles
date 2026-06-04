@@ -416,3 +416,55 @@ scale slider {
   background-color: rgba(203, 166, 247, 0.16);
   border-color: rgba(203, 166, 247, 0.60);
 }
+
+.audio-device-card {
+  background-color: rgba(30, 30, 46, 0.90);
+  border: 1px solid rgba(203, 166, 247, 0.24);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.audio-section-title {
+  color: #cba6f7;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.audio-device-name {
+  color: #a6adc8;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.audio-status-row {
+  margin-bottom: 10px;
+}
+
+.audio-muted-label {
+  color: #6c7086;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.audio-volume-big.small {
+  font-size: 26px;
+}
+
+.audio-switch {
+  background-color: rgba(49, 50, 68, 0.72);
+  border: 1px solid rgba(203, 166, 247, 0.20);
+  border-radius: 14px;
+  padding: 10px;
+  color: #89b4fa;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.audio-switch:hover {
+  background-color: rgba(137, 180, 250, 0.14);
+  border-color: rgba(137, 180, 250, 0.55);
+}

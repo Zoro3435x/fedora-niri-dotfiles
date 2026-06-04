@@ -48,6 +48,23 @@
 
 (defpoll dev_branch :interval "10s"
   `/home/zoro3435x/.config/eww/scripts/dev-status.sh gitbranch`)
+(defpoll audio_output_name :interval "3s"
+  `/home/zoro3435x/.config/eww/scripts/audio.sh output-name`)
+
+(defpoll audio_output_volume :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/audio.sh output-volume`)
+
+(defpoll audio_output_muted :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/audio.sh output-muted`)
+
+(defpoll audio_input_name :interval "3s"
+  `/home/zoro3435x/.config/eww/scripts/audio.sh input-name`)
+
+(defpoll audio_input_volume :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/audio.sh input-volume`)
+
+(defpoll audio_input_muted :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/audio.sh input-muted`)
 
 (defwidget tile [icon title subtitle onclick]
   (button :class "tile" :onclick onclick
@@ -157,22 +174,56 @@
       (button :class "audio-close" :onclick "eww close audio_panel" "󰅖")
     )
 
-    (box :class "audio-main" :orientation "v"
-      (label :class "audio-volume-big" :text "${volume}%")
+    (box :class "audio-device-card" :orientation "v"
+      (label :class "audio-section-title" :text "Salida")
+      (label :class "audio-device-name" :text audio_output_name)
+
+      (box :class "audio-status-row"
+        (label :class "audio-volume-big" :text "${audio_output_volume}%")
+        (label :class "audio-muted-label" :halign "end" :hexpand true :text audio_output_muted)
+      )
 
       (scale
         :class "audio-slider"
         :min 0
         :max 100
-        :value volume
+        :value audio_output_volume
         :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"
       )
+
+      (box :class "audio-buttons"
+        (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" "")
+        (button :class "audio-btn mute" :onclick "/home/zoro3435x/.config/eww/scripts/audio.sh toggle-output-mute" "")
+        (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0" "")
+      )
+
+      (button :class "audio-switch" :onclick "/home/zoro3435x/.config/eww/scripts/audio.sh change-output" "󰓃  Cambiar salida")
     )
 
-    (box :class "audio-buttons"
-      (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" "")
-      (button :class "audio-btn mute" :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" "")
-      (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0" "")
+    (box :class "audio-device-card" :orientation "v"
+      (label :class "audio-section-title" :text "Micrófono")
+      (label :class "audio-device-name" :text audio_input_name)
+
+      (box :class "audio-status-row"
+        (label :class "audio-volume-big small" :text "${audio_input_volume}%")
+        (label :class "audio-muted-label" :halign "end" :hexpand true :text audio_input_muted)
+      )
+
+      (scale
+        :class "audio-slider"
+        :min 0
+        :max 100
+        :value audio_input_volume
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ {}%"
+      )
+
+      (box :class "audio-buttons"
+        (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-" "")
+        (button :class "audio-btn mute" :onclick "/home/zoro3435x/.config/eww/scripts/audio.sh toggle-input-mute" "")
+        (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+ -l 1.0" "")
+      )
+
+      (button :class "audio-switch" :onclick "/home/zoro3435x/.config/eww/scripts/audio.sh change-input" "󰓃  Cambiar entrada")
     )
 
     (button :class "audio-advanced" :onclick "/home/zoro3435x/.config/eww/scripts/open-audio.sh" "󰒓  Configuración avanzada")
@@ -184,16 +235,15 @@
   :geometry (geometry
     :anchor "top right"
     :x "375px"
-    :y "170px"
-    :width "300px"
-    :height "270px"
+    :y "120px"
+    :width "330px"
+    :height "560px"
   )
   :stacking "fg"
   :exclusive false
   :focusable false
   (audio-panel)
 )
-
 (defwidget dev-row [icon name value color]
   (box :class "dev-row"
     (label :class color :text icon)
