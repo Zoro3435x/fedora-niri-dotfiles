@@ -1,0 +1,155 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+/* =========================
+   DASHBOARD WIDE CARDS
+   ========================= */
+
+#custom-avatar,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom-quick-settings,
+#custom-network-settings,
+#custom-clipboard,
+#custom-btop,
+#custom-lock,
+#custom-power {
+    background: rgba(17, 17, 27, 0.78);
+    border: 1px solid rgba(203, 166, 247, 0.24);
+    border-radius: 18px;
+    padding: 10px 12px;
+    margin: 0 10px;
+    color: #cdd6f4;
+}
+
+/* =========================
+   LABELS
+   ========================= */
+
+#custom-system-label,
+#custom-connect-label,
+#custom-actions-label {
+    color: #6c7086;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 0;
+    margin: 4px 0 -3px 0;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+#custom-avatar {
+    color: #cba6f7;
+    font-size: 15px;
+    padding: 14px 12px;
+    background: rgba(30, 30, 46, 0.84);
+    border-color: rgba(203, 166, 247, 0.48);
+}
+
+#clock {
+    color: #cba6f7;
+    font-size: 14px;
+    padding: 12px 12px;
+    background: rgba(30, 30, 46, 0.82);
+}
+
+/* =========================
+   SYSTEM
+   ========================= */
+
+#cpu {
+    color: #89b4fa;
+}
+
+#memory {
+    color: #a6e3a1;
+}
+
+#temperature {
+    color: #f9e2af;
+}
+
+#temperature.critical {
+    color: #f38ba8;
+}
+
+/* =========================
+   CONNECTIVITY
+   ========================= */
+
+#network {
+    color: #89dceb;
+}
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+/* =========================
+   ACTION BUTTONS
+   ========================= */
+
+#custom-quick-settings,
+#custom-network-settings,
+#custom-clipboard,
+#custom-btop,
+#custom-lock,
+#custom-power {
+    font-size: 20px;
+    padding: 13px 12px;
+}
+
+/* Colores de acciones */
+#custom-quick-settings {
+    color: #cba6f7;
+}
+
+#custom-network-settings {
+    color: #89dceb;
+}
+
+#custom-clipboard {
+    color: #89b4fa;
+}
+
+#custom-btop {
+    color: #a6e3a1;
+}
+
+#custom-lock {
+    color: #f9e2af;
+}
+
+#custom-power {
+    color: #f38ba8;
+}
+
+/* Hover */
+#custom-quick-settings:hover,
+#custom-network-settings:hover,
+#custom-clipboard:hover,
+#custom-btop:hover,
+#custom-lock:hover,
+#custom-power:hover,
+#network:hover,
+#pulseaudio:hover,
+#clock:hover {
+    background: rgba(203, 166, 247, 0.16);
+    border-color: rgba(203, 166, 247, 0.55);
+}

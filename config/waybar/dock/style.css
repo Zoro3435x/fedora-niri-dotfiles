@@ -1,0 +1,77 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 22px;
+    font-weight: 700;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(17, 17, 27, 0.62);
+    border: 1px solid rgba(203, 166, 247, 0.22);
+    border-radius: 22px;
+    color: #cdd6f4;
+}
+#custom-files,
+#custom-firefox,
+#custom-kitty,
+#custom-neovim,
+#custom-fuzzel,
+#custom-steam,
+#custom-btop,
+#custom-spotify,
+#custom-power {
+    background: rgba(30, 30, 46, 0.72);
+    border: 1px solid rgba(203, 166, 247, 0.16);
+    border-radius: 16px;
+    padding: 8px 13px;
+    margin: 7px 3px;
+}
+#custom-files {
+    color: #89b4fa;
+}
+
+#custom-firefox {
+    color: #fab387;
+}
+
+#custom-kitty {
+    color: #cba6f7;
+}
+
+#custom-neovim {
+    color: #a6e3a1;
+}
+
+#custom-fuzzel {
+    color: #89dceb;
+}
+
+#custom-btop {
+    color: #f9e2af;
+}
+
+#custom-spotify {
+    color: #a6e3a1;
+}
+
+#custom-power {
+    color: #f38ba8;
+}
+#custom-steam{
+    color: #89b4fa;
+}
+
+#custom-steam:hover,
+#custom-files:hover,
+#custom-settings:hover,
+#custom-firefox:hover,
+#custom-kitty:hover,
+#custom-neovim:hover,
+#custom-fuzzel:hover,
+#custom-btop:hover,
+#custom-spotify:hover,
+#custom-power:hover {
+    background: rgba(203, 166, 247, 0.18);
+    border-color: rgba(203, 166, 247, 0.55);
+}

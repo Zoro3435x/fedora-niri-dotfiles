@@ -1,0 +1,68 @@
+(defpoll volume :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh volume`)
+
+(defpoll cpu :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh cpu`)
+
+(defpoll ram :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh ram`)
+
+(defpoll temp :interval "5s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh temp`)(defwidget tile [icon text onclick]
+  
+  (button :class "tile" :onclick onclick
+    (box :orientation "v" :space-evenly false
+      (label :class "tile-icon" :text icon)
+      (label :class "tile-text" :text text))))
+
+(defwidget stat [name value color]
+  (box :class "stat"
+    (label :class "stat-name" :text name)
+    (label :class color :text value)))
+
+(defwidget quick-panel []
+  (box :class "panel" :orientation "v" :space-evenly false
+
+    (box :class "header"
+      (label :class "title" :text "Quick Settings")
+      (button :class "close" :onclick "eww close quick_panel" "󰅖"))
+
+    (box :class "grid"
+      (tile :icon "󰖩" :text "Red" :onclick "/home/zoro3435x/.config/waybar/scripts/network-menu.sh")
+      (tile :icon "" :text "Audio" :onclick "/home/zoro3435x/.config/eww/scripts/open-audio.sh")    
+    (box :class "grid"
+      (tile :icon "󰂯" :text "Bluetooth" :onclick "/home/zoro3435x/.config/eww/scripts/open-bluetooth.sh")
+      (tile :icon "󰌾" :text "Lock" :onclick "/home/zoro3435x/.config/eww/scripts/lock-safe.sh")
+  
+    (box :class "stats"
+      (stat :name "CPU" :value "${cpu}%" :color "blue")
+      (stat :name "RAM" :value "${ram}%" :color "green")
+      (stat :name "TEMP" :value "${temp}°" :color "yellow"))
+
+    (box :class "slider-card" :orientation "v"
+      (box
+        (label :class "slider-label" :text "  Volumen")
+        (label :class "slider-value" :halign "end" :hexpand true :text "${volume}%"))
+      (scale
+        :min 0
+        :max 100
+        :value volume
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"))
+
+    (box :class "footer"
+      (button :class "footer-btn" :onclick "/home/zoro3435x/.config/eww/scripts/open-btop.sh" "")
+      (button :class "footer-btn" :onclick "sh -c 'cliphist list | fuzzel --dmenu | cliphist decode | wl-copy'" "")
+      (button :class "footer-btn power" :onclick "wlogout" "⏻"))))
+
+(defwindow quick_panel
+  :monitor 1
+  :geometry (geometry
+    :anchor "top right"
+    :x "18px"
+    :y "72px"
+    :width "320px"
+    :height "470px")
+  :stacking "fg"
+  :exclusive false
+  :focusable false
+  (quick-panel))

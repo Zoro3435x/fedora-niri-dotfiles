@@ -1,0 +1,175 @@
+(defpoll volume :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh volume`)
+
+(defpoll cpu :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh cpu`)
+
+(defpoll ram :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh ram`)
+
+(defpoll temp :interval "5s"
+  `/home/zoro3435x/.config/eww/scripts/stats.sh temp`)
+
+(defpoll time :interval "10s"
+  `date "+%H:%M"`)
+
+(defpoll date :interval "60s"
+  `date "+%a, %d %b"`)
+
+(defpoll ssid :interval "10s"
+  `nmcli -t -f active,ssid dev wifi | awk -F: '$1=="yes"{print $2; exit}'`)
+
+(defpoll media_title :interval "3s"
+  `/home/zoro3435x/.config/eww/scripts/media.sh title`)
+
+(defpoll media_artist :interval "3s"
+  `/home/zoro3435x/.config/eww/scripts/media.sh artist`)
+
+(defpoll media_icon :interval "2s"
+  `/home/zoro3435x/.config/eww/scripts/media.sh icon`)
+
+
+(defwidget tile [icon title subtitle onclick]
+  (button :class "tile" :onclick onclick
+    (box :orientation "v" :space-evenly false
+      (label :class "tile-icon" :text icon)
+      (label :class "tile-title" :text title)
+      (label :class "tile-subtitle" :text subtitle)
+    )
+  )
+)
+
+(defwidget stat [icon name value class]
+  (box :class "stat-card" :orientation "v"
+    (label :class class :text icon)
+    (label :class "stat-name" :text name)
+    (label :class "stat-value" :text value)
+  )
+)
+
+(defwidget quick-panel []
+  (box :class "panel" :orientation "v" :space-evenly false
+
+    (box :class "header"
+      (box :orientation "v"
+        (label :class "title" :text "󰣇 Fedora / Niri")
+        (label :class "subtitle" :text "Wayland workspace")
+      )
+      (box :class "timebox" :orientation "v" :halign "end" :hexpand true
+        (label :class "time" :text time)
+        (label :class "date" :text date)
+      )
+    )
+
+    (box :class "grid"
+      (tile :icon "󰖩" :title "WiFi" :subtitle ssid :onclick "/home/zoro3435x/.config/waybar/scripts/network-menu.sh")
+      (tile :icon "" :title "Audio" :subtitle "${volume}%" :onclick "/home/zoro3435x/.config/eww/scripts/toggle-audio.sh")
+    )
+
+    (box :class "grid"
+      (tile :icon "󰂯" :title "Bluetooth" :subtitle "Devices" :onclick "/home/zoro3435x/.config/eww/scripts/open-bluetooth.sh")
+      (tile :icon "󰌾" :title "Lock" :subtitle "Secure" :onclick "/home/zoro3435x/.config/eww/scripts/lock-safe.sh")
+    )
+
+    (box :class "stats"
+      (stat :icon "" :name "CPU" :value "${cpu}%" :class "blue")
+      (stat :icon "" :name "RAM" :value "${ram}%" :class "green")
+      (stat :icon "" :name "TEMP" :value "${temp}°" :class "yellow")
+    )
+
+    (box :class "media-card" :orientation "v"
+      (box
+        (label :class "media-icon" :text "")
+        (box :orientation "v"
+          (label :class "media-title" :text media_title)
+          (label :class "media-artist" :text media_artist)
+        )
+      )
+
+      (box :class "media-controls"
+        (button :class "media-btn" :onclick "/home/zoro3435x/.config/eww/scripts/media.sh previous" "")
+        (button :class "media-btn play" :onclick "/home/zoro3435x/.config/eww/scripts/media.sh playpause" media_icon)
+        (button :class "media-btn" :onclick "/home/zoro3435x/.config/eww/scripts/media.sh next" "")
+      )
+    )
+
+    (box :class "slider-card" :orientation "v"
+      (box
+        (label :class "slider-label" :text "  Volumen")
+        (label :class "slider-value" :halign "end" :hexpand true :text "${volume}%")
+      )
+      (scale
+        :min 0
+        :max 100
+        :value volume
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"
+      )
+    )
+
+    (box :class "footer"
+      (button :class "footer-btn" :onclick "/home/zoro3435x/.config/eww/scripts/open-btop.sh" "")
+      (button :class "footer-btn" :onclick "sh -c 'cliphist list | fuzzel --dmenu | cliphist decode | wl-copy'" "")
+      (button :class "footer-btn" :onclick "fuzzel" "󰍉")
+      (button :class "footer-btn power" :onclick "sh -c 'wlogout &'" "⏻")
+    )
+  )
+)
+
+(defwindow quick_panel
+  :monitor 1
+  :geometry (geometry
+    :anchor "top right"
+    :x "18px"
+    :y "72px"
+    :width "340px"
+    :height "520px"
+  )
+  :stacking "fg"
+  :exclusive false
+  :focusable false
+  (quick-panel)
+)
+(defwidget audio-panel []
+  (box :class "audio-panel" :orientation "v" :space-evenly false
+
+    (box :class "audio-header"
+      (label :class "audio-title" :text "  Audio")
+      (button :class "audio-close" :onclick "eww close audio_panel" "󰅖")
+    )
+
+    (box :class "audio-main" :orientation "v"
+      (label :class "audio-volume-big" :text "${volume}%")
+
+      (scale
+        :class "audio-slider"
+        :min 0
+        :max 100
+        :value volume
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"
+      )
+    )
+
+    (box :class "audio-buttons"
+      (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" "")
+      (button :class "audio-btn mute" :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" "")
+      (button :class "audio-btn" :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0" "")
+    )
+
+    (button :class "audio-advanced" :onclick "/home/zoro3435x/.config/eww/scripts/open-audio.sh" "󰒓  Configuración avanzada")
+  )
+)
+
+(defwindow audio_panel
+  :monitor 1
+  :geometry (geometry
+    :anchor "top right"
+    :x "375px"
+    :y "170px"
+    :width "300px"
+    :height "270px"
+  )
+  :stacking "fg"
+  :exclusive false
+  :focusable false
+  (audio-panel)
+)

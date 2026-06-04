@@ -1,0 +1,90 @@
+{
+    "layer": "top",
+    "position": "right",
+    "output": "HDMI-A-1",
+    "width": 82,
+
+    "margin-top": 64,
+    "margin-bottom": 16,
+    "margin-right": 10,
+
+    "spacing": 8,
+
+    "modules-left": [
+        "custom/actions-label",
+        "custom/quick-settings",
+        "network",
+        "pulseaudio",
+        "custom/network-settings",
+        "custom/clipboard",
+        "custom/btop",
+        "custom/lock",
+        "custom/power"
+    ],
+
+    "modules-center": [],
+
+    "modules-right": [],
+
+    "custom/actions-label": {
+        "format": "ACT",
+        "tooltip": false
+    },
+
+    "custom/quick-settings": {
+        "format": "󰒓",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/waybar/scripts/quick-settings.sh"
+    },
+
+    "network": {
+        "format-wifi": "󰖩\nWiFi",
+        "format-ethernet": "󰈀\nLAN",
+        "format-disconnected": "󰖪\nOff",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/waybar/scripts/network-menu.sh",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "pulseaudio": {
+        "format": "\n{volume}%",
+        "format-muted": "\nMute",
+        "tooltip": false,
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "custom/network-settings": {
+        "format": "󰤨",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/waybar/scripts/network-menu.sh",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "custom/clipboard": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "sh -c 'cliphist list | fuzzel --dmenu | cliphist decode | wl-copy'"
+    },
+
+    "custom/btop": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "kitty -e btop"
+    },
+
+    "custom/lock": {
+        "format": "󰌾",
+        "tooltip": false,
+        "on-click": "swaylock"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}

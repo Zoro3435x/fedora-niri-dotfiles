@@ -1,0 +1,79 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 64,
+
+    "margin-bottom": 14,
+    "margin-left": 560,
+    "margin-right": 560,
+
+    "spacing": 8,
+
+    "modules-center": [
+        "custom/files",
+        "custom/firefox",
+        "custom/kitty",
+        "custom/neovim",
+        "custom/fuzzel",
+        "custom/steam",
+        "custom/spotify",
+        "custom/btop",
+        "custom/power"
+    ],
+    "custom/files": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "nautilus"
+    },
+
+   "custom/firefox": {
+        "format": "󰈹",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/niri/scripts/focus-or-open.sh org.mozilla.firefox firefox"
+    },
+
+    "custom/kitty": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/niri/scripts/focus-or-open.sh kitty kitty"
+    },
+    "custom/neovim": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "kitty -e nvim"
+    },
+
+    "custom/fuzzel": {
+        "format": "󰍉",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/niri/scripts/app-menu.sh"
+    },
+
+    "custom/btop": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "kitty -e btop"
+    },
+
+    "custom/spotify": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/niri/scripts/focus-or-open.sh spotify 'flatpak run com.spotify.Client'"
+    },
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    },
+
+    "custom/steam": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/niri/scripts/focus-or-open.sh steam steam"
+    },
+    "custom/settings": {
+       "format": "󰒓",
+        "tooltip": false,
+        "on-click": "/home/zoro343x/.config/eww/scripts/toggle-panel.sh"
+    }
+}

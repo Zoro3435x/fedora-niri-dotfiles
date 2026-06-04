@@ -1,0 +1,5 @@
+*.log
+*.cache
+.cache/
+node_modules/
+lazy-lock.json

@@ -1,0 +1,140 @@
+ {
+    "layer": "top",
+    "position": "top",
+    "height": 42,
+
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+
+    "spacing": 8,
+
+    "modules-left": [
+        "custom/logo",
+        "niri/workspaces",
+        "niri/window",
+        "custom/media"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "network",
+        "pulseaudio",
+        "tray",
+        "custom/power"
+    ],
+
+    "custom/logo": {
+        "format": "󰣇",
+        "tooltip": false
+    },
+    "custom/media": {
+        "exec": "/home/zoro3435x/.config/waybar/scripts/media-waybar.sh",
+        "interval": 2,
+        "tooltip": false,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "flatpak run com.spotify.Client"
+    },
+
+    "niri/workspaces": {
+        "format": "{value}",
+        "disable-scroll": false
+    },
+
+    "niri/window": {
+        "format": "{}",
+        "max-length": 42,
+        "separate-outputs": true
+    },
+   
+    "clock": {
+        "format": "󰥔 {:%H:%M  %d %b}",
+        "tooltip": true,
+        "tooltip-format": "<big>{:%A %d %B %Y}</big>",
+        "on-click": "/home/zoro3435x/.config/waybar/scripts/calendar-popup.sh"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false,
+        "interval": 2
+    },
+
+    "memory": {
+        "format": " {}%",
+        "tooltip": false,
+        "interval": 2
+    },
+
+    "temperature": {
+        "format": " {temperatureC}°C",
+        "critical-threshold": 80,
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀 LAN",
+        "format-disconnected": "󰖪 Offline",
+        "tooltip": false,
+        "on-click": "/home/zoro3435x/.config/waybar/scripts/network-menu.sh",
+        "on-click-right": "nm-connection-editor"
+    },
+
+   "pulseaudio": {
+      "format": " {volume}%",
+      "format-muted": " Muted",
+      "format-icons": {
+          "headphone": "",
+          "hands-free": "󰋎",
+          "headset": "󰋎",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": [
+                "",
+                "",
+                ""
+            ]
+      },
+      "tooltip": false,
+      "scroll-step": 5,
+      "on-click": "pavucontrol",
+      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+      "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0",
+      "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󱐋 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": [
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰁹"
+        ],
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}

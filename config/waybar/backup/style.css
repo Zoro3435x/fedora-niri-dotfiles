@@ -1,0 +1,101 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+/* ===== WORKSPACES ===== */
+
+#workspaces {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+#workspaces button {
+    color: #6c7086;
+    border-radius: 8px;
+    padding: 0 10px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #cba6f7;
+    background: rgba(203, 166, 247, 0.15);
+}
+
+#workspaces button:hover {
+    background: rgba(88, 91, 112, 0.4);
+}
+
+/* ===== WINDOW TITLE ===== */
+
+#window {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 12px;
+    padding: 0 14px;
+    margin-left: 8px;
+    color: #bac2de;
+}
+
+/* ===== CLOCK ===== */
+
+#clock {
+    background: rgba(30, 30, 46, 0.85);
+    color: #cba6f7;
+    border-radius: 12px;
+    padding: 0 18px;
+    font-weight: bold;
+}
+
+/* ===== RIGHT MODULES ===== */
+
+#cpu,
+#memory,
+#network,
+#battery,
+#tray {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 12px;
+    padding: 0 14px;
+    margin-left: 6px;
+}
+
+/* ===== STATUS COLORS ===== */
+
+#cpu {
+    color: #89b4fa;
+}
+
+#memory {
+    color: #a6e3a1;
+}
+
+#network {
+    color: #89dceb;
+}
+
+#battery {
+    color: #f9e2af;
+}
+
+#battery.warning {
+    color: #fab387;
+}
+
+#battery.critical {
+    color: #f38ba8;
+}
+
+/* ===== SYSTEM TRAY ===== */
+
+#tray {
+    padding-right: 10px;
+}

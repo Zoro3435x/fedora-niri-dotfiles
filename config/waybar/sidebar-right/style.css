@@ -1,0 +1,86 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+#custom-quick-settings,
+#network,
+#pulseaudio,
+#custom-network-settings,
+#custom-clipboard,
+#custom-btop,
+#custom-lock,
+#custom-power {
+    background: rgba(17, 17, 27, 0.78);
+    border: 1px solid rgba(203, 166, 247, 0.24);
+    border-radius: 18px;
+    padding: 13px 8px;
+    margin: 0 8px;
+    color: #cdd6f4;
+}
+
+#custom-actions-label {
+    color: #6c7086;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 0;
+    margin: 4px 0 -4px 0;
+}
+
+#custom-quick-settings {
+    color: #cba6f7;
+    font-size: 20px;
+}
+
+#network {
+    color: #89dceb;
+}
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+#custom-network-settings {
+    color: #89dceb;
+    font-size: 20px;
+}
+
+#custom-clipboard {
+    color: #89b4fa;
+    font-size: 20px;
+}
+
+#custom-btop {
+    color: #a6e3a1;
+    font-size: 20px;
+}
+
+#custom-lock {
+    color: #f9e2af;
+    font-size: 20px;
+}
+
+#custom-power {
+    color: #f38ba8;
+    font-size: 20px;
+}
+
+#custom-quick-settings:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-network-settings:hover,
+#custom-clipboard:hover,
+#custom-btop:hover,
+#custom-lock:hover,
+#custom-power:hover {
+    background: rgba(203, 166, 247, 0.16);
+    border-color: rgba(203, 166, 247, 0.55);
+}

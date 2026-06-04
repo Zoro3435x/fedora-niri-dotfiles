@@ -1,0 +1,171 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+/* =========================
+   BASE PILL STYLE
+   ========================= */
+
+#custom-logo,
+#workspaces,
+#window,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#custom-media,
+#custom-power {
+    background: rgba(17, 17, 27, 0.72);
+    border: 1px solid rgba(203, 166, 247, 0.22);
+    border-radius: 16px;
+    padding: 0 13px;
+    margin: 4px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   LOGO
+   ========================= */
+
+#custom-logo {
+    color: #cba6f7;
+    font-size: 17px;
+    padding: 0 15px;
+    margin-right: 2px;
+}
+
+#custom-media {
+    color: #a6e3a1;
+    padding: 0 16px;
+}
+/* =========================
+   WORKSPACES
+   ========================= */
+
+#workspaces {
+    padding: 3px 6px;
+}
+
+#workspaces button {
+    color: #a6adc8;
+    background: transparent;
+    border-radius: 12px;
+    padding: 0 11px;
+    margin: 0 2px;
+    transition: all 0.18s ease;
+}
+
+#workspaces button.active {
+    color: #1e1e2e;
+    background: #cba6f7;
+}
+
+#workspaces button.focused {
+    color: #1e1e2e;
+    background: #cba6f7;
+}
+
+#workspaces button:hover {
+    color: #cdd6f4;
+    background: rgba(203, 166, 247, 0.22);
+}
+
+/* =========================
+   WINDOW TITLE
+   ========================= */
+
+#window {
+    color: #bac2de;
+    padding: 0 16px;
+    margin-left: 2px;
+}
+
+/* Cuando no hay ventana activa */
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* =========================
+   CENTER CLOCK
+   ========================= */
+
+#clock {
+    color: #cba6f7;
+    font-weight: 700;
+    padding: 0 20px;
+}
+
+/* =========================
+   RIGHT MODULES
+   ========================= */
+
+#cpu {
+    color: #89b4fa;
+}
+
+#memory {
+    color: #a6e3a1;
+}
+
+#temperature {
+    color: #f9e2af;
+}
+
+#temperature.critical {
+    color: #f38ba8;
+}
+
+#network {
+    color: #89dceb;
+}
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+#battery {
+    color: #f9e2af;
+}
+
+#battery.warning {
+    color: #fab387;
+}
+
+#battery.critical {
+    color: #f38ba8;
+}
+
+#tray {
+    padding: 0 12px;
+}
+
+#custom-power {
+    color: #f38ba8;
+    font-size: 15px;
+    padding: 0 15px;
+}
+
+#custom-power:hover {
+    background: rgba(243, 139, 168, 0.18);
+    border-color: rgba(243, 139, 168, 0.55);
+}
+
+#custom-media {
+    color: #a6e3a1;
+    padding: 0 16px;
+}
