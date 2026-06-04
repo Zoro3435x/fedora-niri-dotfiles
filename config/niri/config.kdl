@@ -275,15 +275,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-
-
-
-
-
-spawn-at-startup "waybar" "-c" "/home/zoro3435x/.config/waybar/dock/config.jsonc" "-s" "/home/zoro3435x/.config/waybar/dock/style.css"
 spawn-at-startup "eww" "daemon"
-
+spawn-at-startup "/home/zoro3435x/.config/niri/scripts/start-waybar.sh"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 spawn-at-startup "swaybg" "-i" "/home/zoro3435x/.config/niri/wallpaper.jpg" "-m" "fill"
@@ -387,45 +380,13 @@ window-rule {
     clip-to-geometry true
 }
 
+// ==============================
+// Floating utility windows
+// ==============================
+
 window-rule {
     match app-id="org.pulseaudio.pavucontrol"
-    open-floating true
-    default-column-width { fixed 700; }
-    default-window-height { fixed 500; }
-}
 
-window-rule {
-    match app-id="kitty" title="^btop$"
-    open-floating true
-    default-column-width { fixed 850; }
-    default-window-height { fixed 600; }
-}
-
-window-rule {
-    match app-id="spotify"
-    default-column-width { proportion 0.55; }
-}
-
-window-rule {
-    match app-id="steam"
-    default-column-width { proportion 0.72; }
-}
-window-rule {
-    match app-id="org.mozilla.firefox"
-
-    default-column-width {
-        proportion 0.62
-    }
-}
-window-rule {
-    match app-id="kitty"
-
-    default-column-width {
-        proportion 0.52
-    }
-}
-window-rule {
-    match app-id="pavucontrol"
     open-floating true
 
     default-column-width {
@@ -439,6 +400,7 @@ window-rule {
 
 window-rule {
     match app-id="nm-connection-editor"
+
     open-floating true
 
     default-column-width {
@@ -452,8 +414,72 @@ window-rule {
 
 window-rule {
     match app-id="yad"
+
     open-floating true
+
+    default-column-width {
+        fixed 420
+    }
+
+    default-window-height {
+        fixed 340
+    }
 }
+
+// ==============================
+// Kitty special windows
+// ==============================
+
+window-rule {
+    match app-id="kitty" title="^btop$"
+
+    open-floating true
+
+    default-column-width {
+        fixed 850
+    }
+
+    default-window-height {
+        fixed 600
+    }
+}
+
+// ==============================
+// Main applications
+// ==============================
+
+window-rule {
+    match app-id="org.mozilla.firefox"
+
+    default-column-width {
+        proportion 0.62
+    }
+}
+
+window-rule {
+    match app-id="kitty"
+
+    default-column-width {
+        proportion 0.52
+    }
+}
+
+window-rule {
+    match app-id="spotify"
+
+    default-column-width {
+        proportion 0.55
+    }
+}
+
+window-rule {
+    match app-id="steam"
+
+    default-column-width {
+        proportion 0.72
+    }
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program

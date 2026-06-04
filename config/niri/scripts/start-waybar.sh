@@ -4,6 +4,6 @@ pkill waybar
 
 sleep 0.3
 
-waybar &
+waybar >/tmp/waybar-main.log 2>&1 &
 
-waybar -c "$HOME/.config/waybar/dock/config.jsonc" -s "$HOME/.config/waybar/dock/style.css" &
+waybar -c "$HOME/.config/waybar/dock/config.jsonc" -s "$HOME/.config/waybar/dock/style.css" >/tmp/waybar-dock.log 2>&1 &
