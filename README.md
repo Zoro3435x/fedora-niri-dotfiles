@@ -1,14 +1,19 @@
-# Fedora Niri Dotfiles
+<div align="center">
 
-Configuración personal para Fedora Linux usando Wayland, Niri, Waybar, Eww, Kitty y Neovim.  
-El objetivo de este setup es tener un entorno minimalista, rápido, estético y orientado al teclado para desarrollo de software.
+# 🌸 fedora-niri-dotfiles
 
-## Preview
+**Niri · Waybar · Eww · Kitty · Catppuccin Mocha**
 
-> Agrega aquí tus capturas del escritorio.
+![Fedora](https://img.shields.io/badge/Fedora-Linux-51A2DA?style=flat-square&logo=fedora&logoColor=white)
+![Wayland](https://img.shields.io/badge/Wayland-Session-FFBC00?style=flat-square&logo=wayland&logoColor=black)
+![Niri](https://img.shields.io/badge/Compositor-Niri-cba6f7?style=flat-square)
+![Catppuccin](https://img.shields.io/badge/Theme-Catppuccin%20Mocha-1e1e2e?style=flat-square)
 
-```text
-Niri + Waybar + Eww + Kitty + Catppuccin Mocha
+</div>
+
+---
+
+## 🧩 Stack
 
 | Componente          | Herramienta             |
 | ------------------- | ----------------------- |
@@ -32,60 +37,121 @@ Niri + Waybar + Eww + Kitty + Catppuccin Mocha
 | Tema                | Catppuccin Mocha        |
 | Fuente              | JetBrainsMono Nerd Font |
 
-Paleta
-Base:       #1e1e2e
-Mantle:     #181825
-Crust:      #11111b
-Surface:    #313244
-Text:       #cdd6f4
-Subtext:    #a6adc8
-Mauve:      #cba6f7
-Blue:       #89b4fa
-Green:      #a6e3a1
-Yellow:     #f9e2af
-Red:        #f38ba8
+---
 
-Dependencias principales
+## 🎨 Paleta — Catppuccin Mocha
+
+| Nombre  | Hex       | Vista |
+| ------- | --------- | ----- |
+| Base    | `#1e1e2e` | ![](https://img.shields.io/badge/%20-%20-1e1e2e?style=flat-square) |
+| Mantle  | `#181825` | ![](https://img.shields.io/badge/%20-%20-181825?style=flat-square) |
+| Crust   | `#11111b` | ![](https://img.shields.io/badge/%20-%20-11111b?style=flat-square) |
+| Surface | `#313244` | ![](https://img.shields.io/badge/%20-%20-313244?style=flat-square) |
+| Text    | `#cdd6f4` | ![](https://img.shields.io/badge/%20-%20-cdd6f4?style=flat-square) |
+| Subtext | `#a6adc8` | ![](https://img.shields.io/badge/%20-%20-a6adc8?style=flat-square) |
+| Mauve   | `#cba6f7` | ![](https://img.shields.io/badge/%20-%20-cba6f7?style=flat-square) |
+| Blue    | `#89b4fa` | ![](https://img.shields.io/badge/%20-%20-89b4fa?style=flat-square) |
+| Green   | `#a6e3a1` | ![](https://img.shields.io/badge/%20-%20-a6e3a1?style=flat-square) |
+| Yellow  | `#f9e2af` | ![](https://img.shields.io/badge/%20-%20-f9e2af?style=flat-square) |
+| Red     | `#f38ba8` | ![](https://img.shields.io/badge/%20-%20-f38ba8?style=flat-square) |
+
+---
+
+## 📦 Instalación
+
+### 1. Dependencias principales
+
+```bash
 sudo dnf install \
-  niri \
-  waybar \
-  kitty \
-  fuzzel \
-  swaybg \
-  mako \
-  swaylock \
-  wlogout \
-  cliphist \
-  wl-clipboard \
-  btop \
-  zoxide \
-  fastfetch \
-  playerctl \
-  pavucontrol \
-  yad \
-  jq \
-  git \
-  curl \
-  unzip \
-  tar \
-  neovim
+  niri waybar kitty fuzzel swaybg mako swaylock wlogout \
+  cliphist wl-clipboard btop zoxide fastfetch playerctl \
+  pavucontrol yad jq git curl unzip tar neovim
+```
 
-Dependencias adicionales
+### 2. Dependencias adicionales
+
+```bash
+# GitHub CLI
 sudo dnf install gh
+
+# Eww
 sudo dnf copr enable varlad/eww
 sudo dnf install eww
+
+# SwayOSD
 sudo dnf copr enable markupstart/SwayOSD
 sudo dnf install swayosd
+
+# Spotify
 flatpak install flathub com.spotify.Client
+```
 
-Fuentes
-Instalar JetBrainsMono Nerd Font.
-Directorio recomendado:
+### 3. Fuentes
+
+Instalar **JetBrainsMono Nerd Font** en el directorio recomendado:
+
+```bash
 mkdir -p ~/.local/share/fonts
-Después de instalar la fuente:
+# Coloca los archivos .ttf aquí y luego actualiza el cache:
 fc-cache -fv
+```
 
-Estructura del repo
+---
+
+## 🚀 Instalación manual
+
+**Clonar el repositorio:**
+
+```bash
+git clone git@github.com:Zoro3435x/fedora-niri-dotfiles.git ~/dotfiles
+```
+
+**Respaldar configuración actual:**
+
+```bash
+mkdir -p ~/.config/backup-dotfiles
+
+for dir in niri waybar kitty fuzzel mako wlogout eww fastfetch nvim; do
+  [ -e "$HOME/.config/$dir" ] && mv "$HOME/.config/$dir" "$HOME/.config/backup-dotfiles/$dir"
+done
+
+[ -e "$HOME/.config/starship.toml" ] && mv "$HOME/.config/starship.toml" "$HOME/.config/backup-dotfiles/starship.toml"
+```
+
+**Copiar configuración:**
+
+```bash
+cp -r ~/dotfiles/config/niri ~/.config/
+cp -r ~/dotfiles/config/waybar ~/.config/
+cp -r ~/dotfiles/config/kitty ~/.config/
+cp -r ~/dotfiles/config/fuzzel ~/.config/
+cp -r ~/dotfiles/config/mako ~/.config/
+cp -r ~/dotfiles/config/wlogout ~/.config/
+cp -r ~/dotfiles/config/eww ~/.config/
+cp -r ~/dotfiles/config/fastfetch ~/.config/
+cp -r ~/dotfiles/config/nvim ~/.config/
+cp ~/dotfiles/config/starship.toml ~/.config/starship.toml
+```
+
+**Dar permisos a scripts:**
+
+```bash
+chmod +x ~/.config/niri/scripts/*.sh
+chmod +x ~/.config/waybar/scripts/*.sh
+chmod +x ~/.config/eww/scripts/*.sh
+```
+
+**Validar configuración de Niri:**
+
+```bash
+niri validate
+```
+
+---
+
+## 📁 Estructura del repositorio
+
+```
 dotfiles/
 ├── config/
 │   ├── niri/
@@ -100,166 +166,89 @@ dotfiles/
 │   └── starship.toml
 ├── update-dotfiles.sh
 └── README.md
+```
 
-Instalación manual
+---
 
-Clonar el repositorio:
+## ⌨️ Atajos principales
 
-git clone git@github.com:Zoro3435x/fedora-niri-dotfiles.git ~/dotfiles
+| Atajo                | Acción                        |
+| -------------------- | ----------------------------- |
+| `Super + Enter`      | Abrir Kitty                   |
+| `Super + D`          | Abrir Fuzzel                  |
+| `Super + A`          | App menu por categorías       |
+| `Super + Shift + Q`  | Quick panel Eww               |
+| `Super + Shift + W`  | Wallpaper switcher            |
+| `Super + Escape`     | Bloquear pantalla             |
+| `Super + Shift + E`  | Wlogout                       |
+| `Super + Alt + V`    | Historial de portapapeles     |
+| `Super + B`          | Btop                          |
+| `Super + O`          | Overview de Niri              |
 
-Crear respaldo de configuración actual:
+---
 
-mkdir -p ~/.config/backup-dotfiles
+## 🔧 Scripts importantes
 
-for dir in niri waybar kitty fuzzel mako wlogout eww fastfetch nvim; do
-  [ -e "$HOME/.config/$dir" ] && mv "$HOME/.config/$dir" "$HOME/.config/backup-dotfiles/$dir"
-done
+| Script | Descripción |
+| ------ | ----------- |
+| `~/.config/niri/scripts/start-waybar.sh` | Lanza Waybar superior, dock inferior y panel Eww |
+| `~/.config/eww/scripts/toggle-panel.sh` | Abre/cierra el panel rápido |
+| `~/.config/niri/scripts/wallpaper-switcher.sh` | Cambia el fondo de pantalla con Fuzzel |
+| `~/.config/niri/scripts/app-menu.sh` | Launcher por categorías |
+| `~/.config/niri/scripts/focus-or-open.sh` | Enfoca una app si está abierta, o la lanza |
 
-[ -e "$HOME/.config/starship.toml" ] && mv "$HOME/.config/starship.toml" "$HOME/.config/backup-dotfiles/starship.toml"
+---
 
-Copiar configuración:
+## ✨ Características
 
-cp -r ~/dotfiles/config/niri ~/.config/
-cp -r ~/dotfiles/config/waybar ~/.config/
-cp -r ~/dotfiles/config/kitty ~/.config/
-cp -r ~/dotfiles/config/fuzzel ~/.config/
-cp -r ~/dotfiles/config/mako ~/.config/
-cp -r ~/dotfiles/config/wlogout ~/.config/
-cp -r ~/dotfiles/config/eww ~/.config/
-cp -r ~/dotfiles/config/fastfetch ~/.config/
-cp -r ~/dotfiles/config/nvim ~/.config/
-cp ~/dotfiles/config/starship.toml ~/.config/starship.toml
+### 🔵 Waybar superior
+Barra translúcida con: workspaces · ventana activa · música · reloj · CPU · RAM · red · audio · power
 
-Dar permisos a scripts:
+### 🟣 Dock inferior
+Dock con Waybar para abrir o enfocar: Archivos · Firefox · Kitty · Neovim · Fuzzel · Steam · Spotify · Btop · Power
 
-chmod +x ~/.config/niri/scripts/*.sh
-chmod +x ~/.config/waybar/scripts/*.sh
-chmod +x ~/.config/eww/scripts/*.sh
+### 🟡 Panel Eww
+Centro de control con: WiFi · Audio · Steam · Lock · CPU · RAM · Temperatura · Spotify / Now Playing · Slider de volumen · Btop · Clipboard · Power
 
-Validar Niri:
+### 🖼️ Wallpaper switcher
+Cambia fondos desde `~/Pictures/Wallpapers` usando Fuzzel. El wallpaper activo se guarda en `~/.config/niri/wallpaper.jpg`.
 
-niri validate
-Scripts importantes
-Iniciar Waybar
-~/.config/niri/scripts/start-waybar.sh
+### 🗂️ App menu por categorías
+Launcher personalizado con Fuzzel organizado en: Desarrollo · Internet · Juegos · Archivos · Sistema · Multimedia
 
-Lanza:
+### 🎯 Dock inteligente
+Scripts que enfocan la app si ya está abierta, o la lanzan si no existe.
 
-Waybar superior
-Dock inferior
-Panel rápido Eww
-~/.config/eww/scripts/toggle-panel.sh
-Wallpaper switcher
-~/.config/niri/scripts/wallpaper-switcher.sh
-App menu
-~/.config/niri/scripts/app-menu.sh
-Dock inteligente
-~/.config/niri/scripts/focus-or-open.sh
+App IDs configurados:
 
-Permite enfocar una app si ya está abierta o abrirla si no existe.
+| App     | ID                      |
+| ------- | ----------------------- |
+| Firefox | `org.mozilla.firefox`   |
+| Kitty   | `kitty`                 |
+| Steam   | `steam`                 |
+| Spotify | `spotify`               |
 
-Atajos principales
-Atajo	Acción
-Super + Enter	Abrir Kitty
-Super + D	Abrir Fuzzel
-Super + A	App menu por categorías
-Super + Shift + Q	Quick panel Eww
-Super + Shift + W	Wallpaper switcher
-Super + Escape	Bloquear pantalla
-Super + Shift + E	Wlogout
-Super + Alt + V	Historial de portapapeles
-Super + B	Btop
-Super + O	Overview de Niri
-Características
-Waybar superior
+---
 
-Barra superior translúcida con:
+## 🖥️ Notas sobre monitores
 
-workspaces
-ventana activa
-música actual
-reloj
-CPU
-RAM
-red
-audio
-power
-Dock inferior
+Configuración pensada para:
 
-Dock hecho con Waybar que abre o enfoca apps:
+| Puerto    | Monitor           | Resolución      |
+| --------- | ----------------- | --------------- |
+| HDMI-A-1  | AOC               | 1920×1080       |
+| HDMI-A-2  | Dell              | 3840×2160 @ 1.5x scale |
 
-Archivos
-Firefox
-Kitty
-Neovim
-Fuzzel / App menu
-Steam
-Spotify
-Btop
-Power
-Panel Eww
+El panel Eww está fijado a `HDMI-A-1`. Si usas otro monitor, edita `~/.config/eww/eww.yuck` y cambia:
 
-Centro de control con:
-
-WiFi
-Audio
-Steam
-Lock
-CPU
-RAM
-Temperatura
-Spotify / Now Playing
-Slider de volumen
-Btop
-Clipboard
-Power
-Wallpaper switcher
-
-Permite cambiar fondos con Fuzzel desde:
-
-~/Pictures/Wallpapers
-
-El wallpaper activo se copia a:
-
-~/.config/niri/wallpaper.jpg
-App menu por categorías
-
-Launcher personalizado con Fuzzel:
-
-Desarrollo
-Internet
-Juegos
-Archivos
-Sistema
-Multimedia
-Dock inteligente
-
-El dock usa scripts para:
-
-enfocar una app si ya está abierta
-abrir la app si no existe
-
-App IDs configurados actualmente:
-
-Firefox  → org.mozilla.firefox
-Kitty    → kitty
-Steam    → steam
-Spotify  → spotify
-Notas sobre monitores
-
-Configuración actual pensada para:
-
-HDMI-A-1 → AOC 1920x1080
-HDMI-A-2 → Dell 3840x2160 scale 1.5
-
-El panel Eww está fijado a:
-
-HDMI-A-1
-
-Si se usa otro monitor, editar:
-
-~/.config/eww/eww.yuck
-
-y cambiar:
-
+```lisp
 :monitor 1
+```
+
+---
+
+<div align="center">
+
+Hecho con 🖤 y Catppuccin Mocha
+
+</div>
